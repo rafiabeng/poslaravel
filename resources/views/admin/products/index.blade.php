@@ -24,7 +24,7 @@ Produk
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->selling_price }}</td>
+                    <td>'rp'{{ $product->selling_price }}</td>
                     <td>{{ $product->modal_price }}</td>
                     <td><a href="{{url('/admin/products/'.$product->id.'/edit')}}"
                             class="btn btn-sm btn-primary">Edit</a>

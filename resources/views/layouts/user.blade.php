@@ -70,26 +70,36 @@
                with font-awesome or any other icon font library -->
                <li class="nav-item">
                 <li class="nav-item">
-                    <a href="{{ url('admin/dashboard') }}" class="nav-link">
+                    <a href="{{ url('') }}" class="nav-link">
                       <i class="nav-icon fas fa-tachometer-alt"></i>
                       <p>Dashboard</p>
                     </a>
                   </li>         
                <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ url('admin/products') }}" class="nav-link">
-                                  <i class="nav-icon fas fa-mug-hot"></i>
-                                  <p>Manajemen Produk</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ url('admin/attendance') }}" class="nav-link">
-                                    
-                                  <i class="nav-icon fas fa-calendar-alt"></i>
-                                  <p>Rekapitulasi Absen</p>
-                                </a>
-                              </li>
+                            
+          
+          <li class="nav-item">
+            <a href="{{ url('/pemesanan') }}" class="nav-link">
+              <i class="nav-icon fas fa-coffee"></i>
+              <p>
+                Pemesanan
+              </p>
+            </a>
+            <li class="nav-item">
+            <a href="{{ url('/pembayaran') }}" class="nav-link">
+              <i class="nav-icon fas fa-cash-register"></i>
+              <p>
+                Pembayaran
+              </p>
+            </a>
+            <li class="nav-item">
+            <a href="{{ url('/orderinglist') }}" class="nav-link">
+              <i class="nav-icon fas fa-clipboard-list8"></i>
+              <p>
+                Ordering List
+              </p>
+            </a>
+          </li>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

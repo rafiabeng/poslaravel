@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Auth;
 
 include ('admin_routes.php');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'UserAttendanceController@index');

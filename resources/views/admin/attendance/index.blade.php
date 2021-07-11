@@ -4,7 +4,6 @@ Rekap Absen
 @endsection
 
 @section('content')
-<section class="content">
     <div class="container-fluid">
       <!-- Info boxes -->
           <div class="card">
@@ -15,40 +14,57 @@ Rekap Absen
             </div>
             <!-- /.card-header -->
             <div class="card-body">
+                
+                </form>
                     <div class="container text-center">
                     <!-- Isi Form Di bawah ini -->
-                    <form action="controller/checkin.php" method="POST">
+                
                     <div class="container text-center">
+                        <h3>Rekap Absensi Karyawan Bulan {{ $namabulan }}</h1>
+                        
+                        <form action="{{ url('/admin/attendance')}}" method="get">
+                        <select name="bulan" id='gMonth2'>
+                        <option value=''>--Select Month--</option>
+                        <option value='1'>Janaury</option>
+                        <option value='2'>February</option>
+                        <option value='3'>March</option>
+                        <option value='4'>April</option>
+                        <option value='5'>May</option>
+                        <option value='6'>June</option>
+                        <option value='7'>July</option>
+                        <option value='8'>August</option>
+                        <option value='9'>September</option>
+                        <option value='10'>October</option>
+                        <option value='11'>November</option>
+                        <option value='12'>December</option>
+                        </select> 
+                        <input type="submit" value="">
+                        
                     <table id="example2" class="table table-striped table-bordered">
 
                                   <thead>
-                                  <div class="text-left ml-0">
                                   
-                    <!-- <a class="btn btn-primary" href="tambahmenu" role="button">Add</a> -->
-                    </div> 
+                    
                                   <tr>
                                       
                                       <th>Nama</th>
                                       <th>Jabatan</th>
                                       <th>Telat Masuk</th>
                                       <th>Tidak Hadir</th>
-                                      <th>Lembur</th>
 
                                       
 
                                   </tr>
                                   </thead>
                                   <tbody>
-                                  
+                                    @foreach($users as $user)
                                     <tr>
-                                    
-                                    <td>".$row['nama']."</td>  
-                                    <td>".$row['jabatan']."</td>                        
-                                    <td>".$row2['hasil2']."</td>
-                                    <td>".$tidakhadir."</td>
-                                    <td>".$row4['hasil4']."</td>
+                                    <td>{{ $user->name }}</td>  
+                                    <td>{{ $user->jabatan }}</td>                        
+                                    <td>{{ $user->jumlahTelat($bulan) }}</td>
+                                    <td>{{ $user->jumlahTidakHadir($bulan) }}</td>
                                     </tr>
-                                    
+                                    @endforeach
                                  
                                  </tbody>
                               </table>
@@ -56,7 +72,7 @@ Rekap Absen
                     
 
                     <!-- Akhir Form -->
-          </form>
+      
                   <!-- end line php -->
 
 
@@ -65,5 +81,5 @@ Rekap Absen
             </div>
           </div>
     </div>
-</section>
+
 @endsection

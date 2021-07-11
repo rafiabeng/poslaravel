@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function attendances(){
+        return $this->hasMany(Attendance::class, 'user_id','id');
+    }
+
+    public function jumlahTidakHadir($bulan){
+        $hadirCount = Attendance::where(['user_id'=>$this->id,'status'=>'Masuk'])->whereMonth('date',$bulan)->count();
+        $jumlahTidakHadir = 25 - $hadirCount;
+        return $jumlahTidakHadir;
+    }
+
+     public function jumlahTelat($bulan){
+        $telatCount = Attendance::where(['user_id'=>$this->id,'status'=>'Masuk','status_telat'=>'1'])->whereMonth('date',$bulan)->count();
+        return $telatCount;
+    }
 }
