@@ -21,5 +21,10 @@ include ('admin_routes.php');
 
 Auth::routes();
 
+Route::get('/absensi2', function () {
+return view('absensi');
+ });
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'UserAttendanceController@index');
+Route::get('/absen', 'UserAttendanceController@index');
+Route::post('/absen', 'UserAttendanceController@store');
+Route::post('admin/products', 'Admin\ProductController@store');

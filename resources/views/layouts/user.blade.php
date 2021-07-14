@@ -94,7 +94,7 @@
             </a>
             <li class="nav-item">
             <a href="{{ url('/orderinglist') }}" class="nav-link">
-              <i class="nav-icon fas fa-clipboard-list8"></i>
+              <i class="nav-icon fas fa-clipboard-list"></i>
               <p>
                 Ordering List
               </p>

@@ -3,7 +3,7 @@
 Dashboard
 @endsection
 @section('content')
-<section class="content">
+
     <div class="container-fluid">
       <!-- Info boxes -->
       <div class="row">
@@ -77,23 +77,6 @@ Dashboard
       </div>
       <!-- /.row -->
 
-      
-              <!--/.card -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
+    
 
-          <!-- TABLE: LATEST ORDERS -->
-          
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-
-        
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </div><!--/. container-fluid -->
-  </section>
 @endsection
