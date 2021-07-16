@@ -12,88 +12,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserAttendanceController extends Controller
 {
-    // public function status(Request $request){
-    // if($this->submit == "checkout") {
-    //    $status='Masuk';
-      
-    //   }else if($this->submit == "checkout"){
-    //     $status='Pulang';
-    //   }
-    //   return $status;
-    //   $this->store($status);
-    // }
 
-    // public function statustelat(Request $request){
-    // $time = date("H:i");
-    // $batastelat = '09:00';
-    // $statustelat = 0;
-    //  if ($time>=$batastelat){
-         
-    //         $statustelat = 1;
-    //     }
-    //     return $statustelat;
-    //     $this->store($statustelat);
-    // }
-
-   
     public function index(Request $request){
-        // $attendance=new Attendance();
-        // $user=new User();
-
-        // $date = date("Y-m-d");
-        // $time = date("H:i:s");
-        
-        // $batas = "09:00";
-        // $statustelat = 0;
-        // if($time >= $batas){
-        //     $statustelat = 1;
-        // }
-
-        // switch ($request->input('submit')) {
-        //     case 'Check In':
-        //         $status="Masuk";
-
-        //         $attendance->user_id=$user->id;
-        //         $attendance->time=$time;
-        //         $attendance->date=$date;
-        //         $attendance->status=$status;
-        //         $attendance->status_telat=$statustelat;
-        //         $attendance->save();
-        //          Alert::success('Berhasil!','Produk berhasil ditambahkan!');
-        //          return redirect('/absen');
-        //         break;
-
-        //     case 'Check Out':
-        //         $status="Pulang";
-
-        //         $attendance->user_id=$user->id;
-        //         $attendance->time=$time;
-        //         $attendance->date=$date;
-        //         $attendance->status=$status;
-        //         $attendance->status_telat=$statustelat;
-
-        //         echo $status;
-        //         $attendance->save();
-                
-        //          Alert::success('Berhasil!','Produk berhasil ditambahkan!');
-        //          return redirect('/absen');
-
-        //         break;
-        // }
-        
       return view('dashboard');   
-        
-        // $attendance->user_id=$user->id;
-        // $attendance->time=$time;
-        // $attendance->date=$date;
-        
-        // $attendance->status_telat=$statustelat;
-        // $attendance->save();
-
-       
-       
-        
-
     }
 
     

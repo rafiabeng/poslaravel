@@ -35,7 +35,7 @@
             </ul>
 
             <!-- Right navbar links -->
-            
+
         </nav>
         <!-- /.navbar -->
 
@@ -56,7 +56,7 @@
                         <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
@@ -68,28 +68,37 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <li class="nav-item">
-                    <a href="{{ url('admin/dashboard') }}" class="nav-link">
-                      <i class="nav-icon fas fa-tachometer-alt"></i>
-                      <p>Dashboard</p>
-                    </a>
-                  </li>         
-               <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ url('admin/products') }}" class="nav-link">
-                                  <i class="nav-icon fas fa-mug-hot"></i>
-                                  <p>Manajemen Produk</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                            <li class="nav-item">
-                                <a href="{{ url('admin/attendance') }}" class="nav-link">
-                                    
-                                  <i class="nav-icon fas fa-calendar-alt"></i>
-                                  <p>Rekapitulasi Absen</p>
-                                </a>
-                              </li>
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            <a href="{{ url('admin/dashboard') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            <a href="{{ url('admin/products') }}" class="nav-link">
+                                <i class="nav-icon fas fa-mug-hot"></i>
+                                <p>Manajemen Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            <a href="{{ url('admin/attendance') }}" class="nav-link">
+
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>Rekapitulasi Absen</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('admin/setting') }}" class="nav-link">
+
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>Settings</p>
+                            </a>
+                        </li>
+
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

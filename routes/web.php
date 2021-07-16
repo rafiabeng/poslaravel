@@ -12,19 +12,21 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-include ('admin_routes.php');
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Auth::routes();
 
-Route::get('/absensi2', function () {
-return view('absensi');
- });
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/absen', 'UserAttendanceController@index');
-Route::post('/absen', 'UserAttendanceController@store');
-Route::post('admin/products', 'Admin\ProductController@store');
+Route::middleware('auth')->group(function () {
+    include ('admin_routes.php');
+
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // });
+
+
+    Route::get('/absensi2', function () {
+        return view('absensi');
+    });
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/absen', 'UserAttendanceController@index');
+    Route::post('/absen', 'UserAttendanceController@store');
+    Route::post('admin/products', 'Admin\ProductController@store');
+});

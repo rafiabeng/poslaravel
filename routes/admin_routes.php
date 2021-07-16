@@ -14,3 +14,5 @@ Route::delete('admin/products/{id}', 'Admin\ProductController@destroy');
 Route::put('/admin/products/{id}','Admin\ProductController@update');
 
 Route::get('admin/attendance', 'Admin\AttendanceController@index');
+Route::get('admin/setting', 'Admin\SettingController@index');
+Route::put('admin/setting', 'Admin\SettingController@update');
