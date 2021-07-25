@@ -29,4 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/absen', 'UserAttendanceController@index');
     Route::post('/absen', 'UserAttendanceController@store');
     Route::post('admin/products', 'Admin\ProductController@store');
+
+    Route::get('/orderinglist', 'OrderingListController@index');
+    Route::post('/orderinglist/finish/{nomor_meja}', 'OrderingListController@finish');
+    Route::get('/cart/{no_meja}', 'CartController@index');
+    Route::post('/cart', 'CartController@store');
+    Route::get('/tables', 'TablesController@index');
+
 });
