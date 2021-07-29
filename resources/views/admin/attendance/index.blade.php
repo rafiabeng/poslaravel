@@ -23,23 +23,24 @@
                         <h3>Rekap Absensi Karyawan Bulan {{ $namabulan }}</h1>
 
                             <form action="{{ url('/admin/attendance') }}" method="get">
-                                <select name="bulan" id='gMonth2'>
-                                    <option value=''>--Select Month--</option>
-                                    <option value='1'>Janaury</option>
-                                    <option value='2'>February</option>
-                                    <option value='3'>March</option>
-                                    <option value='4'>April</option>
-                                    <option value='5'>May</option>
-                                    <option value='6'>June</option>
-                                    <option value='7'>July</option>
-                                    <option value='8'>August</option>
-                                    <option value='9'>September</option>
-                                    <option value='10'>October</option>
-                                    <option value='11'>November</option>
-                                    <option value='12'>December</option>
-                                </select>
-                                <input type="submit" value="">
-
+                                <div class="d-flex justify-content-center mb-3">
+                                    <select class="form-control col-md-3 mr-3" name="bulan" id='gMonth2'>
+                                        <option value=''>Pilih Bulan</option>
+                                        <option value='1'>Janaury</option>
+                                        <option value='2'>February</option>
+                                        <option value='3'>March</option>
+                                        <option value='4'>April</option>
+                                        <option value='5'>May</option>
+                                        <option value='6'>June</option>
+                                        <option value='7'>July</option>
+                                        <option value='8'>August</option>
+                                        <option value='9'>September</option>
+                                        <option value='10'>October</option>
+                                        <option value='11'>November</option>
+                                        <option value='12'>December</option>
+                                    </select>
+                                    <input class="btn btn-secondary btn-sm" type="submit" value="Submit">
+                                </div>
                                 <table id="example2" class="table table-striped table-bordered">
 
                                     <thead>

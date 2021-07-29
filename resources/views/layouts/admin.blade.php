@@ -70,9 +70,18 @@
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
                         <li class="nav-item">
-                            <a href="{{ url('admin/dashboard') }}" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>Dashboard</p>
+                            <a href="{{ url('admin') }}" class="nav-link">
+
+                                <i class="nav-icon fas fa-chart-line"></i>
+                                <p>Rekapitulasi Penjualan</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url('admin/riwayatpenjualan') }}" class="nav-link">
+
+                                <i class="nav-icon fas fa-history"></i>
+                                <p>Riwayat Transaksi</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -97,6 +106,27 @@
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>Settings</p>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/insight') }}" class="nav-link">
+
+                                <i class="nav-icon fas fa-info-circle"></i>
+                                <p>Insight Produk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/users') }}" class="nav-link">
+
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>Manajemen Users</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item mt-5">
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button class="btn btn-danger">Logout</button>
+                            </form>
                         </li>
 
                 </nav>

@@ -14,7 +14,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Omzet Hari Ini</span>
                         <span class="info-box-number">
-                            <small>Rp. {{ $today }}</small>
+                            Rp {{ number_format($omzetHariIni) }}
 
 
                         </span>
@@ -31,7 +31,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Omzet Bulan Ini</span>
                         <span class="info-box-number">
-                            <small>Rp.</small>
+                            Rp {{ number_format($omzetBulanIni) }}
 
                         </span>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Keuntungan Hari Ini</span>
                         <span class="info-box-number">
-                            <small>Rp.</small>
+                            Rp {{ number_format($keuntunganHariIni) }}
                         </span>
                     </div>
                     <!-- /.info-box-content -->
@@ -66,7 +66,7 @@
                     <div class="info-box-content">
                         <span class="info-box-text">Keuntungan Bulan Ini</span>
                         <span class="info-box-number">
-                            <small>Rp.</small>
+                            Rp {{ number_format($keuntunganBulanIni) }}
                         </span>
                     </div>
                     <!-- /.info-box-content -->

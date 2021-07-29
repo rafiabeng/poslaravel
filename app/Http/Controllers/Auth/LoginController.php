@@ -30,9 +30,12 @@ class LoginController extends Controller
     protected $redirectTo;
 
     protected function redirectTo(){
-        // if(Auth::user()->jabatan == 'admin'){
-        //     return '/admin/dashboard';
-        // }
+         if(Auth::user()->jabatan == 'admin'){
+             return '/admin/dashboard';
+         }
+         else{
+             return '/absen';
+         }
     }
 
     /**

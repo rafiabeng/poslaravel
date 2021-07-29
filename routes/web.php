@@ -17,9 +17,9 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     include ('admin_routes.php');
 
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
+    Route::get('/', function () {
+        return redirect('/login');
+    });
 
 
     Route::get('/absensi2', function () {
@@ -34,6 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/orderinglist/finish/{nomor_meja}', 'OrderingListController@finish');
     Route::get('/cart/{no_meja}', 'CartController@index');
     Route::post('/cart', 'CartController@store');
+    
+    Route::post('/cart/bayar', 'CartController@pay');
+
     Route::get('/tables', 'TablesController@index');
 
 });

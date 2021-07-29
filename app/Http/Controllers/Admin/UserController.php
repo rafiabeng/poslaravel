@@ -1,16 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Cart;
-use App\Table;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Transaction;
-use Illuminate\Support\Facades\DB;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class OrderingListController extends Controller
+class UserController extends Controller
 {
+
+
+    public function __construct()
+    {
+      $this->middleware('admin');
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,12 +24,8 @@ class OrderingListController extends Controller
      */
     public function index()
     {
-        
-        $tables= Table::all();
-        
-        
-
-        return view('orderinglist', compact('tables'));
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -31,16 +33,9 @@ class OrderingListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function finish($nomor_meja)
+    public function create()
     {
-        $carts = Cart::where('no_meja',$nomor_meja)->get();
-        foreach($carts as $cart){
-            $cart->status_antar = 1;
-            $cart->save();
-        }
-        Alert::success('Pesanan telah selesai diantar!');
-        return redirect('/orderinglist');
-
+         return view('admin.users.create');
     }
 
     /**
@@ -51,31 +46,19 @@ class OrderingListController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'jabatan' => $request['jabatan'],
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        Alert::success('User Berhasil Ditambahkan!');
+        return redirect('/admin/users');
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
+   
+   
     /**
      * Update the specified resource in storage.
      *
@@ -96,6 +79,9 @@ class OrderingListController extends Controller
      */
     public function destroy($id)
     {
-        //
+         User::destroy($id);
+
+        Alert::success('User Berhasil Dihapus!');
+          return redirect('/admin/users');
     }
 }

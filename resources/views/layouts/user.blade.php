@@ -35,7 +35,7 @@
             </ul>
 
             <!-- Right navbar links -->
-            
+
         </nav>
         <!-- /.navbar -->
 
@@ -56,7 +56,7 @@
                         <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
@@ -68,38 +68,33 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-               <li class="nav-item">
-                <li class="nav-item">
-                    <a href="{{ url('') }}" class="nav-link">
-                      <i class="nav-icon fas fa-tachometer-alt"></i>
-                      <p>Dashboard</p>
-                    </a>
-                  </li>         
-               <li class="nav-item">
-                            
-          
-          <li class="nav-item">
-            <a href="{{ url('/pemesanan') }}" class="nav-link">
-              <i class="nav-icon fas fa-coffee"></i>
-              <p>
-                Pemesanan
-              </p>
-            </a>
-            <li class="nav-item">
-            <a href="{{ url('/pembayaran') }}" class="nav-link">
-              <i class="nav-icon fas fa-cash-register"></i>
-              <p>
-                Pembayaran
-              </p>
-            </a>
-            <li class="nav-item">
-            <a href="{{ url('/orderinglist') }}" class="nav-link">
-              <i class="nav-icon fas fa-clipboard-list"></i>
-              <p>
-                Ordering List
-              </p>
-            </a>
-          </li>
+                        <li class="nav-item">
+                        <li class="nav-item">
+                            <a href="{{ url('/absen') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+
+
+                        <li class="nav-item">
+
+                        <li class="nav-item">
+                            <a href="{{ url('/tables') }}" class="nav-link">
+                                <i class="nav-icon fas fa-cash-register"></i>
+                                <p>
+                                    Transaksi
+                                </p>
+                            </a>
+                        <li class="nav-item">
+                            <a href="{{ url('/orderinglist') }}" class="nav-link">
+                                <i class="nav-icon fas fa-clipboard-list"></i>
+                                <p>
+                                    Ordering List
+                                </p>
+                            </a>
+                        </li>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

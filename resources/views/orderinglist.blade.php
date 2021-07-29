@@ -12,7 +12,7 @@
             <div class="card-body">
 
                 @foreach ($tables as $table)
-                    @if ($table->carts->count() != 0)
+                    @if ($table->carts()->count() != 0)
                         <div class="card w-100">
 
                             <div class="card-body">
@@ -25,7 +25,7 @@
                                 </div>
                                 <hr>
 
-                                @foreach ($table->carts as $cart)
+                                @foreach ($table->carts() as $cart)
                                     <p>{{ $cart->product->name }} - {{ $cart->quantity }} </p>
                                 @endforeach
 

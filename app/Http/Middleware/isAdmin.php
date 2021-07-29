@@ -19,11 +19,11 @@ class isAdmin
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check() && Auth::user()->jabatan == 'admin') {
-            return redirect('/admin/dashboard');
+             return $next($request);
         }else{
             return redirect('/');
         }
 
-        return $next($request);
+       
     }
 }

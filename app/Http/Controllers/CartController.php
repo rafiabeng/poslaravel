@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Order;
+use App\OrderItem;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
     public function index($no_meja){
-        $products = Product::all();
-        $cartItems = Cart::where('no_meja',$no_meja)
-                    ->leftJoin('products', 'carts.id_produk', '=', 'products.id')
-                    ->get();
-
-                   
+        $products = Product::paginate(6);
+        $cartItems = Cart::where('no_meja',$no_meja)->get();     
 
        return view ('cart',compact('products','no_meja','cartItems'));
     }
@@ -38,5 +39,42 @@ class CartController extends Controller
                 return back()->withInput();
                 
         }
+
+        
     }
+   
+    public function pay(Request $request){
+        //buat no_resi
+        do{
+            $no_resi = mt_rand( 1000000000, 9999999999 );}
+            while ( DB::table( 'orders' )->where( 'no_resi', $no_resi )->exists() );
+        
+        //insert into orders table
+        Order::create(
+                ['no_meja'=>$request->no_meja,
+                'total_harga'=>$request->totalharga,
+                'no_resi'=>$no_resi,
+                'id_user'=>Auth::user()->id]);
+
+        //select semua item di cart yang nomor meja dan status antarnya cocok
+        $items = Cart::where(['no_meja'=>$request->no_meja,'status_antar'=>1])->get();
+        
+        //menyalin data dari table Cart ke OrderItem
+        foreach($items as $item){
+            $orderItem              = new OrderItem();
+            $orderItem->no_resi    = $no_resi;
+            $orderItem->id_produk   = $item->id_produk;
+            $orderItem->quantity   = $item->quantity;
+            $orderItem->id_user     = Auth::user()->id;
+            $orderItem->save();
+
+           
+        }
+        //Menghapus data dari cart yang telah dipindahkan ke orderitem
+        Cart::where('no_meja',$request->no_meja)->delete();
+        Alert::success('Suskes','Pesanan telah dibayar!');
+        return back()->withInput();
+        }
+    
+    
 }
