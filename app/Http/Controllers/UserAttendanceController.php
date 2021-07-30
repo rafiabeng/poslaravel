@@ -63,6 +63,7 @@ class UserAttendanceController extends Controller
             $status = "Masuk";
             $statusTelat = "0";
         }
+        
         else if($request->submit == "checkin" && $time>=$awalCheckIn && $time <= $akhirCheckin){
             $status = "Masuk";
             $statusTelat = "1";
@@ -74,6 +75,7 @@ class UserAttendanceController extends Controller
         
         else if($request->submit == "checkout" && $time>=$awalCheckOut && $time <= $akhirCheckOut){
             $status = "Pulang";
+            $statusTelat = "0";
         }
         else if($request->submit == "checkout" && $time>=$akhirCheckOut || $time<=$awalCheckOut){
             Alert::error('Absen Gagal!','Anda belum memasuki waktu check out!');
@@ -92,21 +94,11 @@ class UserAttendanceController extends Controller
 
         Alert::success('Berhasil!','Absensi anda telah tercatat!');
         return redirect('/absen');
-          
-      
-    //   else if($this->submit == "checkout"){
-    //     $attendance->user_id=Auth::user()->id;
-    //     $attendance->time=$time;
-    //     $attendance->date=$date;
-    //     $attendance->status=$pulang;
-    //     $attendance->status_telat=$statustelat;
-    //     $attendance->save();
+    
 
-    //     Alert::success('Berhasil!','Anda berhasil Check Out');
-    //     return redirect('/absen');
-    //   }
-
-        
-
+    }
+    public function history(){
+        $history = Attendance::where('user_id',Auth::user()->id)->get();
+        return view('attendancehistory',compact('history'));
     }
 }

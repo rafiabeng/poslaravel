@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <div class="card">
         <div class="card-body">
-            <div class="d-flex justify-content-end mb-5">
-                <a href="{{ url('/admin/products/create') }}" class="btn btn-primary">Tambah Produk</a>
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{ url('/admin/products/create') }}" class="btn btn-primary">+Tambah Produk</a>
             </div>
-            <table id="example" class="table table-bordered text-center">
+            <table id="tes" class="table table-bordered text-center">
                 <thead>
                     <th>No.</th>
                     <th>Nama Produk</th>
@@ -28,10 +28,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>
-                                <p>Rp {{ $product->selling_price }}</p>
-                            </td>
-                            <td>{{ $product->modal_price }}</td>
+                            <td>Rp {{ number_format($product->selling_price) }}</td>
+                            <td>Rp {{ number_format($product->modal_price) }}</td>
                             <td><a href="{{ url('/admin/products/' . $product->id . '/edit') }}"
                                     class="btn btn-sm btn-primary">Edit</a>
                             </td>
@@ -43,37 +41,12 @@
             </table>
         </div>
     </div>
-    <script>
-        $(function() {
-            $("#example").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#tes').DataTable();
+            });
+        </script>
 
-            }).buttons().container().appendTo('#example_wrapper .col-md-6:eq(0)');
-            // $('#example2').DataTable({
-            //   "paging": true,
-            //   "lengthChange": false,
-            //   "searching": false,
-            //   "ordering": true,
-            //   "info": true,
-            //   "autoWidth": false,
-            //   "responsive": true,
-            // });
-        });
-    </script>
-    <!-- DataTables  & Plugins -->
-    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="/plugins/jszip/jszip.min.js"></script>
-    <script src="/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script src="/plugins/jquery/jquery.min.js"></script>
+    @endpush
 @endsection

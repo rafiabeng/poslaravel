@@ -134,6 +134,7 @@
                                         <div class="modal-body">
 
                                             <?php $total = 0; ?>
+
                                             @foreach ($cartItems as $cartItem)
 
 

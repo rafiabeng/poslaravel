@@ -76,7 +76,41 @@
             <!-- /.col -->
         </div>
         <!-- /.row -->
+        <div class="card">
+            <div class="card-body">
+                <table id="tes" class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Resi Transaksi</th>
+                            <th>Nomor Meja</th>
+                            <th>Total Transaksi</th>
+                            <th>Nama Kasir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($trans as $transaction)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td><a href="{{ url('/admin/dashboard/' . $transaction->no_resi) }}">{{ $transaction->no_resi }}
+                                </td>
+                                <td>{{ $transaction->no_meja }}</td>
+                                <td>Rp {{ $transaction->total_harga }}</td>
+                                <td>{{ $transaction->kasir->name }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#tes').DataTable();
+            });
+        </script>
 
+    @endpush
 
-
-    @endsection
+@endsection

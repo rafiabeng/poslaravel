@@ -14,7 +14,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class CartController extends Controller
 {
     public function index($no_meja){
-        $products = Product::paginate(6);
+        $products = Product::paginate(12);
         $cartItems = Cart::where('no_meja',$no_meja)->get();     
 
        return view ('cart',compact('products','no_meja','cartItems'));

@@ -34,6 +34,10 @@ class User extends Authenticatable
         return $this->hasMany(Attendance::class, 'user_id','id');
     }
 
+    public function order(){
+        return $this->belongsTo(Order::class, 'user_id','id');
+    }
+
     public function jumlahTidakHadir($bulan){
         $hadirCount = Attendance::where(['user_id'=>$this->id,'status'=>'Masuk'])->whereMonth('date',$bulan)->count();
         $jumlahTidakHadir = 25 - $hadirCount;

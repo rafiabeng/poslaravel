@@ -33,6 +33,20 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-center">
+                    <div class="form-group">
+                        <label for="modal_price">Resep</label>
+                        <textarea type="text" name="resep" id="resep" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <input type="hidden" name="espresso" value="0">
+                    <input class="mr-2" type="checkbox" name="espresso" id="espresso" value="1" value="ad">Memerlukan
+                    Espresso
+
+
+
+                </div>
+                <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </div>
             </form>

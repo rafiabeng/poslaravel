@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-end mb-5">
                 <a href="{{ url('/admin/users/create') }}" class="btn btn-primary">Tambah User</a>
             </div>
-            <table class="table table-bordered text-center">
+            <table id="tes" class="table table-bordered text-center">
                 <thead>
                     <th>No.</th>
                     <th>Nama</th>
@@ -42,4 +42,12 @@
             </table>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#tes').DataTable();
+            });
+        </script>
+
+    @endpush
 @endsection

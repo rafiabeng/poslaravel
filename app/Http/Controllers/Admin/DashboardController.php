@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,7 +48,13 @@ class DashboardController extends Controller
              $keuntunganBulanIni += $gross - ($month->modal_price * $month->quantity);
          }
     // dd($omzetBulanIni,$keuntunganBulanIni,$omzetHariIni,$keuntunganHariIni);
-
-         return view('admin.dashboard',compact('omzetBulanIni','keuntunganBulanIni','omzetHariIni','keuntunganHariIni'));
+         $trans = Order::all();
+         return view('admin.dashboard',compact('omzetBulanIni','keuntunganBulanIni','omzetHariIni','keuntunganHariIni','trans'));
     }
-}
+    public function details($no_resi)
+    {
+        $details=OrderItem::where('no_resi',$no_resi)->get();
+
+        return view('admin.details', compact('details'));
+    }
+    }

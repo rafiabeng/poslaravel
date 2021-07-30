@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/absen', 'UserAttendanceController@index');
     Route::post('/absen', 'UserAttendanceController@store');
+    Route::get('/absen/history', 'UserAttendanceController@history');
     Route::post('admin/products', 'Admin\ProductController@store');
 
     Route::get('/orderinglist', 'OrderingListController@index');

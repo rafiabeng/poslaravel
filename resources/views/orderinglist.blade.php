@@ -17,7 +17,9 @@
 
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
-                                    <h4 class="">Meja {{ $table->nomor_meja }}</h4>
+                                    <h4 class="">Meja {{ $table->nomor_meja }} Espresso
+
+                                    </h4>
                                     <form action="{{ url('/orderinglist/finish/' . $table->nomor_meja) }}" method="post">
                                         @csrf
                                         <button class="btn btn-sm btn-success">Selesai</button>

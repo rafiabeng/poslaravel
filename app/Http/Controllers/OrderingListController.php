@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Product;
 use App\Table;
 use Illuminate\Http\Request;
 use App\Transaction;

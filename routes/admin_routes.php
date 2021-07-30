@@ -3,6 +3,7 @@
 
 
 Route::get('/admin/dashboard', 'Admin\DashboardController@index');
+Route::get('/admin/dashboard/{no_resi}', 'Admin\DashboardController@details');
 
 
 Route::get('admin/products', 'Admin\ProductController@index');

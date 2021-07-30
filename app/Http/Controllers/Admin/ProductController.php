@@ -28,6 +28,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.products.create');
+        
     }
 
     /**
@@ -43,6 +44,8 @@ class ProductController extends Controller
         $product->name=$request->name;
         $product->selling_price=$request->selling_price;
         $product->modal_price=$request->modal_price;
+        $product->resep=$request->resep;
+        $product->espresso=$request->espresso;
         $product->save();
 
         Alert::success('Berhasil!','Produk berhasil ditambahkan!');
@@ -87,6 +90,8 @@ class ProductController extends Controller
         $product->name=$request->name;
         $product->selling_price=$request->selling_price;
         $product->modal_price=$request->modal_price;
+        $product->resep=$request->resep;
+        $product->espresso=$request->espresso;
         $product->save();
 
         Alert::success('Berhasil!','Produk berhasil diedit!');
