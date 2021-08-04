@@ -9,6 +9,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
@@ -42,9 +43,19 @@ class CartController extends Controller
 
         
     }
-   
+    public function hapusCartItem($no_meja,$id_produk){
+        Cart::where(['id_produk'=>$id_produk,'no_meja'=>$no_meja])->delete();
+        return back();
+    }
+   public function print($no_meja){
+       $items = Cart::where('no_meja',$no_meja)->get();
+       $time = date('d-m-Y H:i:s');
+       return view ('struk',compact('items','no_meja','time'));
+       
+   }
     public function pay(Request $request){
         //buat no_resi
+        $no_meja = $request->no_meja;
         do{
             $no_resi = mt_rand( 1000000000, 9999999999 );}
             while ( DB::table( 'orders' )->where( 'no_resi', $no_resi )->exists() );
@@ -57,7 +68,7 @@ class CartController extends Controller
                 'id_user'=>Auth::user()->id]);
 
         //select semua item di cart yang nomor meja dan status antarnya cocok
-        $items = Cart::where(['no_meja'=>$request->no_meja,'status_antar'=>1])->get();
+        $items = Cart::where('no_meja',$request->no_meja)->get();
         
         //menyalin data dari table Cart ke OrderItem
         foreach($items as $item){
@@ -74,7 +85,9 @@ class CartController extends Controller
         Cart::where('no_meja',$request->no_meja)->delete();
         Alert::success('Suskes','Pesanan telah dibayar!');
         return back()->withInput();
-        }
+        //return redirect()->route('struk', ['no_meja' => 1]);
+        // return view('struk/');
+    }
     
     
 }

@@ -38,8 +38,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ url('/admin/dashboard') }}" class="brand-link">
-                <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
+                <img src="/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Bie</b>Coffee</span>
             </a>
 
@@ -47,11 +46,15 @@
             <div class="sidebar">
                 <!-- Sidebar user (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
                     <div class="d-flex info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <div class="row ml-2">
+                            <div class="col">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="col">
+                                {{ Auth::user()->name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -28,9 +28,15 @@ class InsightController extends Controller
             foreach($sum as $product){
                 $totalQuantity += $product->quantity;
             }
-        $produkFavorit = $sum[0];
+            if($sum == NULL){
+                $sum=0;
+                $totalQuantity=0;
+                $produkFavorit=NULL;
+            }
         
         
-        return view('admin.products.insight',compact('sum','totalQuantity','produkFavorit'));
+        
+        
+        return view('admin.products.insight',compact('sum','totalQuantity',));
     }
 }

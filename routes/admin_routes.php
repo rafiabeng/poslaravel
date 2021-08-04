@@ -22,4 +22,5 @@ Route::get('admin/insight', 'Admin\InsightController@index');
 
 Route::resource('admin/users', 'Admin\UserController');
 
+
 Route::get('admin/rekap', 'Admin\RekapPenjualanController@index');

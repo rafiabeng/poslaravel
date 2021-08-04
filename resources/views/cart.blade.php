@@ -102,14 +102,24 @@
                     <div class="card-body">
                         <?php $total = 0; ?>
                         @foreach ($cartItems as $cartItem)
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <p class="text-left"> {{ $cartItem->product->name }} x {{ $cartItem->quantity }}
 
+                                </div>
 
-                            <p class="text-left font-weight-bold
-                            @if ($cartItem->status_antar == 1) text-success @else
-                                text-danger @endif
-                                "> {{ $cartItem->product->name }} x {{ $cartItem->quantity }}
+                                <form action="{{ url('cart/hapus') }}" method="post">
 
-                                <?php $total += $cartItem->product->selling_price * $cartItem->quantity; ?>
+                                    <div class="col-md-2 text-center">
+                                        <a class="fas fa-trash-alt"
+                                            href="{{ url('/cart/' . $cartItem->no_meja . '/hapus/' . $cartItem->id_produk) }}">
+
+                                        </a>
+                                    </div>
+                            </div>
+                            </form>
+
+                            <?php $total += $cartItem->product->selling_price * $cartItem->quantity; ?>
                         @endforeach
 
 
@@ -134,10 +144,7 @@
                                         <div class="modal-body">
 
                                             <?php $total = 0; ?>
-
                                             @foreach ($cartItems as $cartItem)
-
-
                                                 <p class="text-left">{{ $cartItem->quantity }} x
                                                     {{ $cartItem->product->name }} (@
                                                     {{ number_format($cartItem->product->selling_price) }}) =
@@ -168,9 +175,19 @@
                                                     <p class="font-weight-bold">Kembalian: Rp. <span id="kembalian">0</span>
                                                     </p>
                                                 </div>
+                                                <div class="container">
+                                                    <div class="d-flex">
+                                                        <div class="col-md-6">
+                                                            <a target="_blank" href="/struk/{{ $no_meja }}"><button
+                                                                    type="button"
+                                                                    class="btn btn-block btn-primary mt-3 mr-1">Cetak</button></a>
+                                                        </div>
 
-                                                <input name="" id="" class="btn w-100 btn-primary mt-3" type="submit"
-                                                    value="Bayar">
+                                                        <input name="" id="" class="btn w-50 btn-primary mt-3 ml-1"
+                                                            type="submit" value="Bayar">
+
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
 

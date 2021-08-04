@@ -39,31 +39,33 @@
                 <div class=" d-flex justify-content-center">
                     <div class="form-group">
                         <label for="modal_price">Resep</label>
-                        <textarea type="text" name="modal_price" id="modal_price" class="form-control"
+                        <textarea type="text" name="resep" id="modal_price" class="form-control"
                             value="">{{ $product->resep }}</textarea>
                     </div>
                 </div>
 
-                <div class="text-center">
-                    @if ($product->espresso == 1)
-                        <input class="mr-2" type="checkbox" checked="checked" name="espresso" id="espresso">
-                    @else
-                        <input class="mr-2" type="checkbox" name="espresso" id="espresso">
-                    @endif
-                    Memerlukan
-                    Espresso
 
+                <div class=" d-flex justify-content-center">
+                    <div class="form-group">
+                        <label for="espresso">Memerlukan Espresso</label>
+                        <select name="espresso" id="espresso" class="form-control">
+                            <option selected="selected" value="">--Silahkan dipilih--
+                            </option>
+                            <option value="1">Iya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
                 </div>
-                <div class=" d-flex justify-content-center align-items-center mt-3">
-                    <form action="{{ url('/admin/products/' . $product->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash mr-2"></i>Hapus</button>
-                    </form>
-                    <button type="submit" class="btn btn-primary ml-3">Update</button>
-                </div>
-            </form>
+
+
+
         </div>
+        <div class=" d-flex justify-content-center align-items-center mt-3">
+
+            <button type="submit" class="btn btn-primary ml-3">Submit</button>
+        </div>
+        </form>
+    </div>
     </div>
 
 

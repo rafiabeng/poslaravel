@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
-
     public function __construct()
     {
       $this->middleware('admin');
-
     }
     /**
      * Display a listing of the resource.
@@ -66,9 +63,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function edit($id)
+    {
+         $user=User::find($id);
+
+        return view('admin.users.edit', compact('user'));
+    }
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->jabatan=$request->jabatan;
+        $user->save();
+
+        Alert::success('Berhasil!','Produk berhasil diedit!');
+        return redirect('/admin/users');
+
+
     }
 
     /**
@@ -80,8 +92,7 @@ class UserController extends Controller
     public function destroy($id)
     {
          User::destroy($id);
-
-        Alert::success('User Berhasil Dihapus!');
-          return redirect('/admin/users');
+         Alert::success('User Berhasil Dihapus!');
+         return redirect('/admin/users');
     }
 }

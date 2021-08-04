@@ -34,10 +34,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/orderinglist', 'OrderingListController@index');
     Route::post('/orderinglist/finish/{nomor_meja}', 'OrderingListController@finish');
     Route::get('/cart/{no_meja}', 'CartController@index');
+    Route::get('/cart/{no_meja}/hapus/{id_produk}', 'CartController@hapusCartItem');
     Route::post('/cart', 'CartController@store');
     
     Route::post('/cart/bayar', 'CartController@pay');
 
     Route::get('/tables', 'TablesController@index');
+
+    Route::get('/struk/{no_meja}', 'CartController@print');
 
 });

@@ -21,10 +21,15 @@ class OrderingListController extends Controller
     {
         
         $tables= Table::all();
+        $espresso = Cart::where('espresso',0)
+        ->leftJoin('products', 'carts.id_produk', '=', 'products.id')
+        ->groupBy('no_meja')
+        ->count();
+       
         
         
 
-        return view('orderinglist', compact('tables'));
+        return view('orderinglist', compact('tables','espresso'));
     }
 
     /**

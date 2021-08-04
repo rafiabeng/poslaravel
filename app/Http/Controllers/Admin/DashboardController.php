@@ -48,12 +48,15 @@ class DashboardController extends Controller
              $keuntunganBulanIni += $gross - ($month->modal_price * $month->quantity);
          }
     // dd($omzetBulanIni,$keuntunganBulanIni,$omzetHariIni,$keuntunganHariIni);
-         $trans = Order::all();
+         $trans = Order::orderBy('created_at','DESC')->get();
+                        
          return view('admin.dashboard',compact('omzetBulanIni','keuntunganBulanIni','omzetHariIni','keuntunganHariIni','trans'));
     }
     public function details($no_resi)
     {
-        $details=OrderItem::where('no_resi',$no_resi)->get();
+        $details=OrderItem::where('no_resi',$no_resi)
+                            ->orderBy('created_at','DESC')
+                            ->get();
 
         return view('admin.details', compact('details'));
     }

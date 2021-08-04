@@ -12,7 +12,6 @@
             <div class="container col-md-6">
                 <div class="card">
                     <div class="card-body">
-
                         @foreach ($sum as $product)
                             <?php $productPercent = ($product->quantity / $totalQuantity) * 100; ?>
                             <p>{{ $product->name }} </p>

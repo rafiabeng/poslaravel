@@ -28,11 +28,20 @@
                             <td>{{ $user->email }}</td>
 
                             <td>
-                                <form action="{{ url('/admin/users/' . $user->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-sm btn-danger">Hapus</button>
-                                </form>
+                                <div class="d-flex justify-content-center">
+                                    <div class="mr-1">
+                                        <a href="{{ url('/admin/users/' . $user->id . '/edit') }}"
+                                            class="btn btn-sm btn-primary">Edit</a>
+                                    </div>
+                                    <form action="{{ url('/admin/users/' . $user->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <div class="ml-1">
+                                            <button class="btn btn-sm btn-danger">Hapus</button>
+                                        </div>
+                                    </form>
+
+                                </div>
                             </td>
                         </tr>
 

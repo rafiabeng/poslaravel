@@ -38,13 +38,16 @@
                         <textarea type="text" name="resep" id="resep" class="form-control"></textarea>
                     </div>
                 </div>
-                <div class="text-center">
-                    <input type="hidden" name="espresso" value="0">
-                    <input class="mr-2" type="checkbox" name="espresso" id="espresso" value="1" value="ad">Memerlukan
-                    Espresso
-
-
-
+                <div class=" d-flex justify-content-center">
+                    <div class="form-group">
+                        <label for="espresso">Memerlukan Espresso</label>
+                        <select name="espresso" id="espresso" class="form-control">
+                            <option selected="selected" value="">--Silahkan dipilih--
+                            </option>
+                            <option value="1">Iya</option>
+                            <option value="0">Tidak</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>

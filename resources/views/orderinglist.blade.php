@@ -17,7 +17,7 @@
 
                             <div class="card-body">
                                 <div class=" d-flex justify-content-between align-items-center">
-                                    <h4 class="">Meja {{ $table->nomor_meja }} Espresso
+                                    <h4 class="">Meja {{ $table->nomor_meja }}
 
                                     </h4>
                                     <form action="{{ url('/orderinglist/finish/' . $table->nomor_meja) }}" method="post">
@@ -27,10 +27,20 @@
                                 </div>
                                 <hr>
 
-                                @foreach ($table->carts() as $cart)
-                                    <p>{{ $cart->product->name }} - {{ $cart->quantity }} </p>
-                                @endforeach
+                                <?php $esp = 0; ?>
 
+                                @foreach ($table->carts() as $cart)
+                                    <p>{{ $cart->product->name }} - {{ $cart->quantity }}</p>
+                                    @if ($cart->product->espresso == 1)
+                                        <?php $esp += 1; ?>
+                                        @if ($cart->quantity >= 1)
+                                            <?php $esp *= $cart->quantity; ?>
+                                        @endif
+                                    @endif
+                                @endforeach
+                                @if ($esp != 0)
+                                    Espresso yang harus disiapkan: <b>{{ $esp }} shot</b>
+                                @endif
                             </div>
                         </div>
                     @endif
