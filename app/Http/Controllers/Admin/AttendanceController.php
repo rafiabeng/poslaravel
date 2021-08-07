@@ -16,6 +16,7 @@ class AttendanceController extends Controller
     }
     public function index(Request $request){
         $bulan = intval(date("m"));
+        $bulan2 = $bulan -= 1;
         if($request->bulan){
             $bulan = intval($request->bulan);
         }

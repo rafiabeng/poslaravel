@@ -16,21 +16,49 @@
                         <div class="card w-100">
 
                             <div class="card-body">
-                                <div class=" d-flex justify-content-between align-items-center">
-                                    <h4 class="">Meja {{ $table->nomor_meja }}
-
-                                    </h4>
-                                    <form action="{{ url('/orderinglist/finish/' . $table->nomor_meja) }}" method="post">
-                                        @csrf
-                                        <button class="btn btn-sm btn-success">Selesai</button>
-                                    </form>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="content">
+                                        <h4 class="">Meja {{ $table->nomor_meja }}</h4>
+                                    </div>
+                                    <div class="content">
+                                        <div class="d-flex">
+                                            <div class="mr-2">
+                                                <a class="btn btn-sm btn-info" target="_blank"
+                                                    href="{{ url('/orderinglist/print/' . $table->nomor_meja) }}">Print
+                                                    Struk
+                                                </a>
+                                            </div>
+                                            <form action="{{ url('/orderinglist/finish/' . $table->nomor_meja) }}"
+                                                method="post">
+                                                @csrf
+                                                <div class="mr-2">
+                                                    <button class="btn btn-sm btn-success">Selesai</button>
+                                                </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr>
 
                                 <?php $esp = 0; ?>
 
                                 @foreach ($table->carts() as $cart)
-                                    <p>{{ $cart->product->name }} - {{ $cart->quantity }}</p>
+                                    <div class="d-flex">
+
+                                        <a class="far fa-check-square mr-2 pt-1"
+                                            href="{{ url('/orderinglist/' . $table->nomor_meja . '/end/' . $cart->product->id) }}">
+                                        </a>
+                                        <p class="mr-1"><b>({{ $cart->quantity }}) {{ $cart->product->name }}
+                                                <p class="text-info mr-1">{{ $cart->varian }}</p>
+                                            </b></p>
+
+                                        @if ($cart->product->resep != null)
+                                            <p class="mr-1"> ({{ $cart->product->resep }})</p>
+                                        @endif
+                                        @if ($cart->catatan != null)
+                                            <p class="text-info">(Note: {{ $cart->catatan }})</p>
+                                        @endif
+                                    </div>
+
                                     @if ($cart->product->espresso == 1)
                                         <?php $esp += 1; ?>
                                         @if ($cart->quantity >= 1)

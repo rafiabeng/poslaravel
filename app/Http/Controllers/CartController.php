@@ -25,8 +25,8 @@ class CartController extends Controller
        // $cartItems = Cart::where(['no_meja'=>$request->noMeja]);
        
         // dd($cartItems);
-        if(Cart::where(['no_meja'=>$request->noMeja,'id_produk'=>$request->idProduct])->exists()){
-            $cart=Cart::where(['no_meja'=>$request->noMeja,'id_produk'=>$request->idProduct])->first();
+        if(Cart::where(['no_meja'=>$request->noMeja,'id_produk'=>$request->idProduct,'varian'=>$request->varian])->exists()){
+            $cart=Cart::where(['no_meja'=>$request->noMeja,'id_produk'=>$request->idProduct,'varian'=>$request->varian])->first();
             $cart->quantity += $request->quantity;
             $cart->save();
             return back()->withInput();
@@ -36,7 +36,9 @@ class CartController extends Controller
             Cart::create(
                 ['id_produk'=>$request->idProduct,
                 'no_meja'=>$request->noMeja,
-                'quantity'=>$request->quantity]);
+                'quantity'=>$request->quantity,
+                'varian'=>$request->varian,
+                'catatan'=>$request->catatan]);
                 return back()->withInput();
                 
         }
@@ -45,8 +47,11 @@ class CartController extends Controller
     }
     public function hapusCartItem($no_meja,$id_produk){
         Cart::where(['id_produk'=>$id_produk,'no_meja'=>$no_meja])->delete();
+        Alert::success('Suskes','Pesanan telah dihapus!');
         return back();
     }
+
+   
    public function print($no_meja){
        $items = Cart::where('no_meja',$no_meja)->get();
        $time = date('d-m-Y H:i:s');

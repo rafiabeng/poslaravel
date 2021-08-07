@@ -77,7 +77,7 @@ class UserController extends Controller
         $user->jabatan=$request->jabatan;
         $user->save();
 
-        Alert::success('Berhasil!','Produk berhasil diedit!');
+        Alert::success('Berhasil!','User berhasil diedit!');
         return redirect('/admin/users');
 
 

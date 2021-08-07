@@ -19,7 +19,6 @@
                                             </p>
                                             <p>{{ $time }}</p>
                                             <p><b>Meja {{ $no_meja }}</b></p>
-
                                 </td>
                             </tr>
 
@@ -49,11 +48,7 @@
                                                                 <?php $total += $item->product->selling_price * $item->quantity; ?>
                                                             @endforeach
 
-                                                            <tr class="total">
-                                                                <td class="alignright" width="80%">Total</td>
-                                                                <td class="alignright">Rp
-                                                                    {{ number_format($total, 0, ',', '.') }}</td>
-                                                            </tr>
+
 
                                                         </tbody>
                                                     </table>

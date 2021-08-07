@@ -32,7 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::post('admin/products', 'Admin\ProductController@store');
 
     Route::get('/orderinglist', 'OrderingListController@index');
+    Route::get('/orderinglist/print/{no_meja}', 'OrderingListController@struk');
     Route::post('/orderinglist/finish/{nomor_meja}', 'OrderingListController@finish');
+    Route::get('/orderinglist/{no_meja}/end/{id_produk}', 'OrderingListController@endCartItem');
     Route::get('/cart/{no_meja}', 'CartController@index');
     Route::get('/cart/{no_meja}/hapus/{id_produk}', 'CartController@hapusCartItem');
     Route::post('/cart', 'CartController@store');

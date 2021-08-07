@@ -48,6 +48,22 @@ class OrderingListController extends Controller
         return redirect('/orderinglist');
 
     }
+     public function endCartItem($no_meja,$id_produk){
+        $endCart = Cart::where(['id_produk'=>$id_produk,'no_meja'=>$no_meja])->get();
+        foreach($endCart as $end){
+            $end->status_antar = 1;
+            $end->save();
+        }
+        Alert::success('Pesanan telah selesai diantar!');
+        return back();
+
+    }
+    public function struk($no_meja){
+       $items = Cart::where('no_meja',$no_meja)->get();
+       $time = date('d-m-Y H:i:s');
+       return view ('strukorderinglist',compact('items','no_meja','time'));
+       
+   }
 
     /**
      * Store a newly created resource in storage.

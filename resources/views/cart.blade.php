@@ -31,7 +31,7 @@
                                                         <button type="button" class="btn btn-primary btn-block"
                                                             data-toggle="modal"
                                                             data-target="#cartModal{{ $loop->iteration }}">
-                                                            Add to Cart
+                                                            Pesan
                                                         </button>
 
                                                         <!-- Modal -->
@@ -60,18 +60,28 @@
 
                                                                             <div
                                                                                 class="form-group w-50 mx-auto text-center">
+                                                                                <label for="varian">Varian</label>
+                                                                                <select name="varian" id="varian"
+                                                                                    class="form-control">
+                                                                                    <option value="Dingin">Dingin</option>
+                                                                                    <option value="Panas">Panas</option>
+                                                                                </select>
                                                                                 <label for="quantity">Kuantitas: </label>
                                                                                 <input min="1" type="number" name="quantity"
                                                                                     id="quantity" class="form-control"
                                                                                     value="1" placeholder=""
                                                                                     aria-describedby="helpId">
+                                                                                <label for="modal_price">Note</label>
+                                                                                <textarea type="text" name="catatan"
+                                                                                    id="modal_price" class="form-control"
+                                                                                    value=""></textarea>
 
 
                                                                             </div>
                                                                             <div class="d-flex justify-content-center">
                                                                                 <input name="" id=""
                                                                                     class="btn w-50 btn-primary"
-                                                                                    type="submit" value="Add">
+                                                                                    type="submit" value="Pesan">
                                                                             </div>
 
                                                                         </form>
@@ -104,7 +114,8 @@
                         @foreach ($cartItems as $cartItem)
                             <div class="row">
                                 <div class="col-md-10">
-                                    <p class="text-left"> {{ $cartItem->product->name }} x {{ $cartItem->quantity }}
+                                    <p class="text-left"> {{ $cartItem->product->name }} {{ $cartItem->varian }} x
+                                        {{ $cartItem->quantity }}
 
                                 </div>
 
@@ -146,7 +157,7 @@
                                             <?php $total = 0; ?>
                                             @foreach ($cartItems as $cartItem)
                                                 <p class="text-left">{{ $cartItem->quantity }} x
-                                                    {{ $cartItem->product->name }} (@
+                                                    {{ $cartItem->product->name }} {{ $cartItem->varian }} (@
                                                     {{ number_format($cartItem->product->selling_price) }}) =
                                                     {{ number_format($cartItem->product->selling_price * $cartItem->quantity) }}
                                                 </p>

@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label for="espresso">Memerlukan Espresso</label>
                         <select name="espresso" id="espresso" class="form-control">
-                            <option selected="selected" value="">--Silahkan dipilih--
+                            <option selected="selected" value="{{ $product->espresso }}">--Silahkan dipilih--
                             </option>
                             <option value="1">Iya</option>
                             <option value="0">Tidak</option>
