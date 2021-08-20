@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') - Bie Coffee</title>
 
+    <link rel="manifest" href="/manifest.json">
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -18,6 +20,11 @@
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef" />
+    <link rel="apple-touch-icon" href="{{ asset('logofix2.PNG') }}">
+    <link rel="shortcut icon" href="{{ asset('logofix2.PNG') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini">
@@ -152,6 +159,7 @@
             <!-- Main content -->
             <section class="content">
                 @yield('content')
+
             </section>
             <!-- /.content -->
         </div>
@@ -170,6 +178,7 @@
             <!-- Control sidebar content goes here -->
         </aside>
         <!-- /.control-sidebar -->
+
     </div>
     <!-- ./wrapper -->
     <!-- DataTables & Plugins -->
@@ -193,6 +202,41 @@
     <script src="/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="/dist/js/demo.js"></script>
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if (!navigator.serviceWorker.controller) {
+            navigator.serviceWorker.register("/sw.js").then(function(reg) {
+                console.log("Service worker has been registered for scope: " + reg.scope);
+            });
+        }
+
+        var deferredPrompt;
+        window.addEventListener('beforeinstallprompt', function(event) {
+            event.preventDefault();
+            deferredPrompt = event;
+            return false;
+        });
+
+        function addToHomeScreen() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(function(choiceResult) {
+                    console.log(choiceResult.outcome);
+                    if (choiceResult.outcome === 'dismissed') {
+                        console.log('User cancelled installation');
+                    } else {
+                        console.log('User added to home screen');
+                    }
+                });
+                deferredPrompt = null;
+            }
+        }
+
+        const addToHome = document.getElementById('addToHome');
+        addToHome.addEventListener('click', () => {
+            addToHomeScreen()
+        });
+    </script>
 
     @stack('scripts')
 </body>

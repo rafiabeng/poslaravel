@@ -41,32 +41,34 @@
                                     </select>
                                     <input class="btn btn-secondary btn-sm" type="submit" value="Submit">
                                 </div>
-                                <table id="example2" class="table table-striped table-bordered">
+                                <div class="table-responsive">
+                                    <table id="example2" class="table table-striped table-bordered">
 
-                                    <thead>
+                                        <thead>
 
 
-                                        <tr>
-
-                                            <th>Nama</th>
-                                            <th>Jabatan</th>
-                                            <th>Telat Masuk</th>
-                                            <th>Tidak Hadir</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($users as $user)
                                             <tr>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->jabatan }}</td>
-                                                <td>{{ $user->jumlahTelat($bulan) }}</td>
-                                                <td>{{ $user->jumlahTidakHadir($bulan) }}</td>
-                                            </tr>
-                                        @endforeach
 
-                                    </tbody>
-                                </table>
+                                                <th>Nama</th>
+                                                <th>Jabatan</th>
+                                                <th>Telat Masuk</th>
+                                                <th>Tidak Hadir</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->jabatan }}</td>
+                                                    <td>{{ $user->jumlahTelat($bulan) }}</td>
+                                                    <td>{{ $user->jumlahTidakHadir($bulan) }}</td>
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
 
 
 

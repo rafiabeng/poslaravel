@@ -1,0 +1,17 @@
+{
+    "name": "Bie Coffe",
+    "short_name": "Bie Coffee",
+    "start_url": "/",
+    "background_color": "#121212",
+    "description": "POS Bie Coffe",
+    "display": "standalone",
+    "theme_color": "#121212",
+    "icons": [
+        {
+            "src": "logofix2.PNG",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

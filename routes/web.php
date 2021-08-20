@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Auth::routes();
-
+include ('admin_routes.php');
 Route::middleware('auth')->group(function () {
-    include ('admin_routes.php');
+    
 
     Route::get('/', function () {
         return redirect('/login');

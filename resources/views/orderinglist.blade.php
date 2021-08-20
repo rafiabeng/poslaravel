@@ -44,38 +44,40 @@
                                 @foreach ($table->carts() as $cart)
                                     <div class="d-flex">
 
-                                        <a class="far fa-check-square mr-2 pt-1"
+                                        <a class="far fa-check-square fa-lg mr-2 pt-1"
                                             href="{{ url('/orderinglist/' . $table->nomor_meja . '/end/' . $cart->product->id) }}">
                                         </a>
-                                        <p class="mr-1"><b>({{ $cart->quantity }}) {{ $cart->product->name }}
-                                                <p class="text-info mr-1">{{ $cart->varian }}</p>
-                                            </b></p>
+                                        <p class=""><span class="font-weight-bold">({{ $cart->quantity }})
+                                                {{ $cart->product->name }}</span>
+                                            <span class="font-weight-bold text-info">{{ $cart->varian }}</span>
 
-                                        @if ($cart->product->resep != null)
-                                            <p class="mr-1"> ({{ $cart->product->resep }})</p>
-                                        @endif
-                                        @if ($cart->catatan != null)
-                                            <p class="text-info">(Note: {{ $cart->catatan }})</p>
-                                        @endif
-                                    </div>
 
-                                    @if ($cart->product->espresso == 1)
-                                        <?php $esp += 1; ?>
-                                        @if ($cart->quantity >= 1)
-                                            <?php $esp *= $cart->quantity; ?>
-                                        @endif
-                                    @endif
-                                @endforeach
-                                @if ($esp != 0)
-                                    Espresso yang harus disiapkan: <b>{{ $esp }} shot</b>
+                                            @if ($cart->product->resep != null)
+                                                <span class="text-muted"> <br> {{ $cart->product->resep }}</span>
+                                            @endif
+                                            @if ($cart->catatan != null)
+                                                <span class="font-italic"><br> Note: {{ $cart->catatan }}</span>
+                                        </p>
                                 @endif
                             </div>
-                        </div>
+
+                            @if ($cart->product->espresso == 1)
+                                <?php $esp += 1; ?>
+                                @if ($cart->quantity >= 1)
+                                    <?php $esp *= $cart->quantity; ?>
+                                @endif
+                            @endif
+                    @endforeach
+                    @if ($esp != 0)
+                        Espresso yang harus disiapkan: <b>{{ $esp }} shot</b>
                     @endif
-                @endforeach
+            </div>
+        </div>
+        @endif
+        @endforeach
 
 
-                {{-- @foreach ($tables as $table)
+        {{-- @foreach ($tables as $table)
                     <div class="card">
                         <div class="card-header">
                             <p>Meja {{ $table }}</p>
@@ -88,8 +90,8 @@
                     </div>
                 @endforeach --}}
 
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 
 @endsection

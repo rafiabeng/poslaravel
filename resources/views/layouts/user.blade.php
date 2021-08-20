@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') - Bie Coffee</title>
 
+    <link rel="manifest" href="/manifest.json">
+
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -38,7 +41,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ url('/admin/dashboard') }}" class="brand-link">
-                <img src="/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
+                <img src="/logofix2.png" alt="AdminLTE Logo" class="brand-image img-circle" style="opacity: .8">
                 <span class="brand-text font-weight-light"><b>Bie</b>Coffee</span>
             </a>
 
